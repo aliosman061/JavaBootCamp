@@ -1,0 +1,24 @@
+Kisitlama vermek zorunda degiliz, ancak gerekirse verebiliriz. Bir sutunda birden fazla kisitlama verebiliriz, ama Primary Key kisitlamasi farklidir. Bir tabloda sadece bir tane Primary Key olabilir.
+Bir tablo olusturduk. Personel isimli tablomuzun sutun isimleri sirasiyla, Ad, Soyad, Adres, Maas
+Unique kisitlamasi verirsek bir sutuna oradaki verilerin benzersiz olmasi gerekir. Diyelim ki ilk sutun olan Ad sutununa Unique kisitlamasi verdik. Ad sutununa ilk deger olarak Ali girdik. Ali’yi ayni sutun icinde bir kere daha kullanamayiz. Bu cesit bir kisitlama oldugunda iki ya da daha fazla null Kabul edildiginden birden fazla kez null deger girebiliriz. Ad sutunumuza sirasiyla Ali, null, null girdik.
+Tablomuzda Soyad sutununa Not Null kisitlamasi verdik. Bu cesit kisitlamada null deger giremeyiz. Bu nedenle bu sutuna null deger vermedik. Sirasiyla Can, Can, Canan verilerini girdik. Tekrari olan veri verebildik.
+Tablomuzun 3. Sutunu olan Adres sutununa Primary Key kisitlamasi verdik. Bu nedenle Adres sutunundaki veriler hem benzersiz(Unique) hem de not null olacak. Yani null deger veremeyiz. Ornegin ilk satira Istanbul verisi girdiysek, ikinci satira Istanbul verisi giremeyiz. Herhangi bir satira null deger giremeyiz. Bu sutuna sirasiyla, Istanbul, Ankara, Izmir verilerini girdik. Tablomuzda sadece bir sutunda Primary Key kisitlamasi var. Cunku bir tabloda ikinci kez Primary Key kisitlamasi verilemez. Ancak biz iki sutunu(ornegin 1. Ve 2. Sutunu) birlestirip, birlesen sutundan bir Primary Key olusturabiliriz. Buna Composite Primary Key denir.
+Tablomuzun 4. Sutunu olan Maas sutununa Check kisitlamasi verdik. Bu kisitlama ile bir deger araligi veriyoruz. Check(Maas>5000) Boylece maasi 5000’den buyuk olan maaslari bu sutuna veri olarak girbilecegiz. Bu sutunda sirasiyla, 6000, 7000, 8000 verilerini girdik. Check kisitlamasi ile deger araligimizi sinirlandirdik. Biz veri olarak ondalikli veya tam sayilar kullanabiliriz. Integer ve real
+Foreign Key kisitlamasi ile baska bir tablo referans olarak gosterilerek o tablu ile iliski kurulmasi saglanir. Bu iki tablo arasinda parent-child iliskisi olusur. Primary Key kisitlamasi olan tablo parent, Foreign Key olan tablo child olur.
+memurlar tablomuzu olusturduktan ve Tables kismindan control ettikten sonra memurlar tablomuzun ismini gorduk ve memurlar tablomuz uzerine gelip asagi dogru aciyoruz, alt kisminda Constraints kismina gelip onu acip alt kismina baktigimizda verdigimiz kisitlamalarin listelenmis oldugunu gorduk. Orada sadece Not Null kisitlamasini goremedik. pgAdmin4 kisitlamalara isimler vermis ornegin memurlar_isim_key, memurlar_maas_check, memurlar_pkey olarak yazmis. Not Null’i constraint olarak tanimlamiyor.
+Tablomuza insert komutu ile veri girisleri yaptik.
+insert into memurlar values( Id sutunu icin 1, isim sutunu icin Ali, maas sutunu icin 10000, mezuniyet sutunu icin Lisans verilerini girdik.)
+insert into memurlar values(1,'Ali',10000,'Lisans');
+sirasiyla insert komutu ile values icine ilgili sutunlar icin verilen kisitlamalari da dikkate alarak veriler girdik. Ornegin isim sutununda Unique kisitlamasi var ve biz hep farkli isimleri veri olarak girdik. maas sutunu icin Check kisitlamasi vardi, biz maas sutununa hep 5000 uzeri rakamlari girdik. Kisitlamalara uygun veri girisleri yaptigimiz icin pgAdmin4 bu girisleri kabul etti.
+insert into memurlar values(1,'Ali',10000,'Lisans');
+insert into memurlar values(2,'Ahmet',15000,'Yuksek Lisans');
+insert into memurlar values(3,'Altug',20000,'Lisans');
+insert into memurlar values(4,'Elif',18000,'Lisans');
+Bu kodumuzu run edince console’da Insert 1’I gorduk ve control etmek icin select * from memurlar;
+Yazdik ve run edince verilerin liste halinde yazildigini gorduk.
+Buraya kadar sutunlardaki kisitlamalara uygun olan verileri girdik. Bir de kisitlamalara uygun olmayan veriler girelim insert komutu ile.
+insert into memurlar values(1,'Zuhal',20000,'Lise'); bu sekilde veri girilmesi Primary Key kisitlamasina uyulmadigi icin kabul edilmeyecek, pgAdmin bunun icin Error verir.
+insert into memurlar values(1,'Zuhal',20000,'Lise');--Primary Key sebebiyle error verdi.
+insert into memurlar values(5,'Altug',25000,'Yuksek Lisans');--Unique kisitlamasi sebebiyle error verdi. Isim sutununda Unique kisitlamasi vardi, Altug ismini daha once girmistik.
+insert into memurlar values(6,'Hayri',4000,'Lisans');--Check kisitlamasi sebebiyle error verdi. Maas sutununda Check kisitlamasi vardi ve 5000’den yuksek rakam girmemiz gerekirken verinin 4000 olarak girilmesi ile pgAdmin error verdi.
+insert into memurlar values(7,'Burak',30000,null);--Not Null kisitlamasi sebeiyle su sekilde error verdi: ERROR: null value in column "mezuniyet" of relation "memurlar" violates not-null constraint

@@ -1,0 +1,152 @@
+SQL 3.GUN
+Kodlarimizin bulundugu sayfanin tamamini kaydetmek icin masaustunde yeni bir klasor actik. Daha sonra sayfamiza gelip kaydet kismindan save as’I seciyoruz ve dosyamiza bir isim veriyoruz, ornegin day01 diyoruz, save’e tiklayinca dosymiz kaydediliyor. Eger pgAdmin4’u kapatirsak, tekrar acarsak ve ayni kodlarimiza tekrar ulasmak istersek pgAdmin4’ten PostgreSQL’den techproeducation database’ine geliriz ve orada iken yukaridaki query sekline basip yeni bir query sayfasi aciyoruz. Orada klasor sekline basip, dosyamizi kaydettigimiz klasoru acilan masaustunden bulup oradan dosyamiza gelip acinca kodlarimiza ulasiyoruz.
+Ekrani siyah yapmak icin file’dan preferenses, oradan da standard yazan cubuku dark olarak degistirip save yapariz.
+Yazilari buyutmek icin yine File’a, oradan preferences’a, oradan editor’a ve oradan front size’a gelip size’I buyutup save yapiyoruz.
+DELETE
+DML Grubundan ==> DELETE komutu Tablonun İcindeki Veriyi Siler.
+Syntax:
+delete from tablo_adi where şart;
+create table kursiyerler
+(
+id int,
+isim varchar(20), //String ifadeler verirsek ya char ya da varchar data turunu tercih ederiz.
+adres varchar(15),//uzunlugu belli olmayan String ifadeler icin varchar data turunu tercih ederiz.
+sinav_notu int
+);
+4 ayri sutun ismimiz var. create komutu ile kursiyerler tablomuzu run ederek olusturduk ve Tables kisminda kursiyerler ismini gorduk. Goremediysek Tables’i refresh yapariz.
+insert into kursiyerler values(10, 'Arif Can', 'Burdur', 75);
+insert into kursiyerler values(11, 'Vural Tur', 'Trabzon', 95);
+insert into kursiyerler values(12, 'Aylin Tan', 'Bursa', 90);
+insert into kursiyerler values(13, 'Derya Soylu', 'Istanbul', 80);
+insert into kursiyerler values(14, 'Yavuz Bal', 'Ankara', 85);
+insert into kursiyerler values(15, 'Eren Tan', 'Hatay', 90);
+insert into kursiyerler values(16, 'Harun Reşit', 'Isparta', 100);
+insert into kursiyerler values(17, 'Behlül Dana', 'Afyon', 100);
+Tum sutunlardaki verileri listelemek icin select * from kursiyerler;
+Delete sorulari ile yolumuza devam edelim.
+--SORU1: kursiyerler tablosundaki sinav_notu 75 olan satırı siliniz.
+Burada sartimiz var mi? Sinav notu 75 olani silmemiz isteniyor. Sartimiz var.
+delete from kursiyerler where sinav_notu=75; Bu kodmuzu run edince Delete 1 yazildigini console’da gorduk. Yani bir tane silme yapmis. Gerecekten sinav notu 75 olan satiri silmis mi diye select komutunu kullandik.
+select * from kursiyerler; bu islemi yapinca sinav notu 75 olan satirin silindigini diger verilerin console’da listelendigini gorduk.
+--SORU2: kursiyerler tablosundaki adres'i 'Trabzon' olan satırı siliniz.
+Sartimiz adresi Trabzon olan satir hakkinda
+delete from kursiyerler where adres='Trabzon'; run edince bir silme islemi yapildi.
+Yeniden select * from kursiyerler; yasmak yerine yukaridaki soru cozumu icin yazdigimiz select * from kursiyerler;’I secili yapip run ettik. Sonucta adresi Trabzon olan satirin silindigini anladik.
+Biz zaten silinmis bir veriyi silmeye calisirsak ekranda delete 0 goruruz, cunku silinen bir daha silinmiyor.
+--SORU3: kursiyerler tablosundaki isim'i 'Derya Soylu' veya 'Yavuz Bal' olan satırları siliniz
+Oncelikle select * from kursiyerler; kodumuzu secip calistiralim ki ekranda listelenmis olarak verileri gorelim ve nerede Derya Soylu nerede Yavuz Bal var diye bakalim. Bunlari gordukten sonra delete islemini yapalim.  Boyle yapinca ekranda 2. Ve 3. Satirlarda iki ismin oldugunu gorduk.
+delete from kursiyerler where isim=’Derya Soylu’ or ‘Yavuz Bal’;//burada and degil or yazdik isimler arasinda, cunku bir kisinin ismi ya Derya Soylu ya da Yavuz Bal’dir. Biz iki isim arasinda and yazip delete islemi yapinca ekranda delete 0’I gorduk. Yani hic delete yapilmadi. Ancak isimler arasina or yazinca her iki isim tabloda bulundugundan ve onlari buldugundan ikisinin de silindigini gorduk. Artik 2. Ve 3. Satirda baska veriler var.
+--2.YOL; in kullanacagiz
+delete from kursiyerler where isim in('Derya Soylu', 'Yavuz Bal');
+--SORU4: kursiyerler tablosundaki sinav_notu 100 den küçük olan satırları siliniz.
+select * from kursiyerler; kodumuzu once calistirdik ve listelemeyi gorduk.
+delete from kursiyerler where sinav_notu<100;
+select * from kursiyerler; ekranda sinav notu sadece 100 olan iki satirin kaldigini gorduk.
+--SORU5: kursiyerler tablosundaki tüm verileri siliniz.
+Burada bir sart belirtilmemis. Tume verilerin silinmesi isteniyor. Bu nedenle kodumuzda where ile bir sart belirtmeyecegiz.
+delete from kursiyerler;
+select * from kursiyerler;
+ekranda kursiyerler tablosu ve sutun isimlerini gorsek de verileri goremedik, cunku delete ile veriler silindi.
+--SORU6: Kursiyerler tablosunu silelim
+drop table kursiyerler;
+bu islemi run ettikten sonra Tables kismina gidip refresh yapinca silindigini kursiyerler isminin olmadigini gorduk. Dilersek kursiyerler tablomuzu create komutu kismini secili yaparak tekrar olusturabiliriz ya da  sayfamizda yazili tum kodlari secili yapip tekrar calistirabiliriz.
+UPDATE
+Update komutu tablodaki veriyi gunceller
+Update komutunun syntax’I su sekildedir: update tablo-adi set sutun_adi=yeni_deger where sart;
+Film isimli table’imizi olusturalim.
+create table film
+(
+film_no int,
+film_ismi varchar(30),
+film_turu varchar(30)
+);
+insert into film values (100, 'Eyvah Eyvah', 'Komedi');
+insert into film values (200, 'Kurtlar Vadisi', 'Aksiyon');
+insert into film values (300, 'Eltilerin Savasi', 'Komedi');
+insert into film values (400, 'Aile Arasinda', 'Komedi');
+insert into film values (500, 'GORA', 'Bilim Kurgu');
+insert into film values (600, 'Organize Isler', 'Komedi');
+insert into film values (700, 'Babam ve Oglum', 'Dram');
+tabloyu create ile olusturduk ve veriler girdik tablomuza. Select komutu ile verileri listeledik.
+-- SORU1: film_no'su 300 olan film'in
+--film_ismi'ni 'Recep İvedik' olarak güncelleyeniz.
+Tablo icinde bir veriyi guncelleyeceksek update komutunu kullaniriz. Ayrica neyi guncelleyeceksek set ile onu gosterecegiz.
+Film tablosu icindeki veriyi set ile guncelleyecegiz. Burada sartimiz film_no’su 300 olan
+update film set film_ismi='Recep Ivedik' where film_no=300;
+ve daha sonra guncelleme olmus mu diye select komutunu kullandik. Guncellemenin yazdigimiz gibi oldugunu ekranda gorduk.
+-- SORU2: film tablosundaki tüm film_turu'nu 'Aksiyon' olarak güncelleyeniz.
+film_turu sutununun tamamini aksiyon olarak degistirmemiz gerekli. Burada bir sartimiz yok.
+update film set film_turu=’Aksiyon’;
+-- SORU3: film_no'su 100 olan film'in
+--film_ismi'ni 'Cakallarla Dans' , film_turu'nu 'Komedi' olarak güncelleyiniz.
+film_no’su 100 olan film Eyvah Eyvah olup bunun ismi Cakallarla Dans olacak ve film_turu Aksiyon iken Komedi olacak.
+update film set film_ismi='Cakallarla Dans',film_turu='Komedi' where film_no=100;
+Ekranda Update 1 gorduk. Gercekten update var mi diye select komutunu kullandik.
+select * from film;
+Ekranda 100 Cakallarla Dans Komedi’yi 7. Satirda gorduk ve update oldugunu anladik.
+-- SORU4: film_ismi 'Babam ve Oglum' olan film'in
+--film_turu'nu 'Dram' olarak güncelleyiniz.
+Burada sartimiz film ismi Babam ve Oglum olan film
+Biz neyi guncelleyeceksek set’in devaminda onu yazacagiz.
+update film set film_turu='Dram' where film_ismi='Babam ve Oglum';
+select * from film; // Ekranda Babam ve Oglum filmi’nin film_turu’nun Dram olarak guncellendigini gorduk.
+-- SORU5: film tablosundaki 'GORA' olan değeri,
+-- 'AROG' olarak güncelleyiniz.
+Tablomuzdaki GORA verisi 3. sirada ve bu AROG olarak guncellenecek
+update’I film tablomuzda yapacagiz ve bu tablomuzdaki film ismi GORA olan veriyi AROG olarak guncelleyecegiz. Sartimiz var. Sadece GORA’yi AROG’a cevirmek
+ update film set film_ismi='AROG' where film_ismi='GORA';
+select * from film;// Ekranda 7. Sirada AROG’u gorduk. GORA’nin gittigi anlasildi.
+-- SORU6: film tablosundaki film_no değeri 300'den büyük olanların,
+ --film_no'sunu 1 artırarak güncelleyiniz.
+Tablomuzda film_no degeri 300’den buyuk olan 4 filmimiz var. Guncelleme olacagindan update komutunu kullanacagiz.
+update film set film_no=film_no+1 where film_no>300;
+select * from film; //Ekranda film no’su ornegin 600 olanin 601 olarak guncellendigini, 300’den film nosu buyuk olan 4 filmin film nosunun 1 artis ile listelendigini gorduk.
+ Bu kodu bird aha calistiramiz halinde film nosu 300’den buyuk olanlar bir kez daha bir artar. 601 olarak onceki islemde artan film no, bu defa 602 olur.
+ALTER
+DDL Grubundan==> ALTER komutu tabloyu günceller.
+Alter icinde asagidaki alt komutlari kullanabiliriz.
+add column ==> yeni sutun ekleyerek tabloda güncellemeler yapar
+drop column ==> mevcut olan sutunu silerek tabloda güncellemeler yapar
+rename column ==> sutunun ismini degistirerek tabloda güncellemeler yapar
+rename ==> tablonun ismini degistirerek tabloda güncellemeler yapar
+Syntax: alter table tablo_adi güncelleme;
+alter table diyerek tabloda guncelleme yapacagimizi soyluyoruz. Guncelleme yapacagimiz tablonun ismini yaziyoruz ve guncelleme cesitlerinden hangisini kullanacaksak onu ornegin rename column yaziyoruz.
+Alter komutu uzerinde calismak icin arabalar isimli tablomuzu olusturalim.
+create table arabalar
+(
+id int,
+marka varchar(20),
+model varchar(20),
+vites varchar(20),
+fiyat int
+);
+Kodumuzu calistirinca arabalar tablomuz Tables altinda olustu.
+insert into arabalar values(1,'Mercedes','C180','Otomatik',900000);
+insert into arabalar values(2,'Toyota','Corolla','Otomatik',400000);
+insert into arabalar values(3,'Honda','Civic','Otomatik',500000);
+insert into arabalar values(4,'Citroen','C3','Manuel',450000);
+insert kodlarimizin tamamini secip calistirdik.
+select * from arabalar;// run edince verilerin listelendigini gorduk.
+--SORU1: arabalar tablosuna kilometre varchar(10) seklinde yeni sutun ekleyiniz.
+Biz tabloda guncelleme yapacagimiz icin update degil alter table komutunu kullanacagiz. Tabloya yeni sutun ekleyecegimiz icin kodumuza add column komutunu ekleyeycegiz. Soruya gore ekleyecegimiz sutunun ismi kilometre ve data turu varchar()
+alter table arabalar add column kilometre varchar(10);//ALTER TABLE yazisini ekranda gorduk
+select * from arabalar;//kilometre isminde yeni bir sutun olusturuldugunu gorduk, ancak veri olarak null yaziyor her satirda
+--SORU2: arabalar tablosuna yas int seklinde yeni sutun ekleyiniz.
+Biz tabloya yeni bir sutun ekleyecegimiz icin alter komutunu kullaniriz.
+Arabalar tablosunda sutun ekleme seklinde bir guncelleme yapacagiz ve bu sutunun ismi yas olacak, data turu int olacak.
+alter table arabalar add column yas int;
+select * from arabalar;
+Kodumuzu calistirinca tablomuzda yas isimli bir sutunun daha eklendigini gorduk. Ancak burada da degerler null olarak gorundu. Biz deger girmek icin satirlara update komutunu kullanabiliriz. Insert komutu ile butun sutunlar icin veriler girmistik, ama sadece bir sutun icine bir veri girisi yapacaksak update’I kullaniriz. Yine de insert ile veri girisi yapalim dersek bu da mumkundur.
+--SORU3: arabalar tablosundan vites sutununu siliniz
+arabalar tablomuzda vites isimli sutun silinecek.
+alter table arabalar drop column vites;
+select * from arabalar;
+kodumuzu secince ve calistirinca arabalar tablomuzda artik vites sutununun olmadigini gorduk.
+--SORU4: arabalar tablosundaki fiyat sutununun ismini bedel olarak güncelleyiniz
+alter table arabalar rename column fiyat to bedel;//fiyat bedel olarak guncellendi
+select * from arabalar;//tablomuzda fiyat sutunu yerinde bedel isimli sutun var artik.
+--SORU5: arabalar tablosunun ismini galeri olarak güncelleyiniz
+alter table arabalar rename to galeri;//Tables’i kodumuzu calistirdiktan sonra refresh yapinca tablomuz isminin artik Galeri oldugunu gorduk.
+- -SORU6: galeri tablosunun ismini arabalar olarak güncelleyiniz
+Tablomuzun adi artik galeri oldugundan galeri ismini arabalar olarak asagidaki sekilde guncelleyecegiz.
+alter table galeri rename to arabalar;//run sonrasi Tables’I refresh yapinca tablo isminin arabalar oldugunu gorduk.

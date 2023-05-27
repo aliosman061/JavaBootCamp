@@ -1,0 +1,18 @@
+
+                           Stering Methodları
+  1) toUpperCase() : tüm harfleri büyük harfe çevirir.
+  a- bize String bir data döndürür.
+  2) toLowerCase() : tüm harfleri küçültür.
+  a- bize String bir data döndürür.
+  3) charAt() : bize data'daki ilk karakteri verir parantez içerisine
+  '0' yazmak gerekir.0 dan başlar.
+  a- index ile çalışır.Char return eder.
+  4) lenght : bir datadaki karakter sayısını bize veririr boşluk dahil.
+  a- int bir değer döner.
+  5) substring : iki kullanımı vardır. birincisi başlangıç ve bitiş indexi verilirse
+  başlangıç indexini alır bitiş indexini almaz.
+  ikici olarak stringin verilen index ten sonuna kadar alınmasını sağlar.
+  6) contains() : bir data varmı? yokmu diye bakar bize boolean bir değer
+  olarak döndürür.
+  7) startsWith : başlayıp başlamadığını sorar. iki çeşit var. birinde direk
+  soruyon diğerinde ilk  kelimleri at şeklinde de olabilir.boolean döner.

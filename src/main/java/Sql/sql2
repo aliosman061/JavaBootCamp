@@ -1,0 +1,96 @@
+SQL 2. GUN
+pgAdmin’leri actik ve database yazan kisim uzerinde sagi tikladik ve gorunen create kisminda Database yazan kisma geldik. Database;I sectik ve ismini girdik. Techproeducation isimli database’i belirledik ve asagida save yazan butona tikladik. Sol tarafta sirali olarak database alt taraflarinda techproeducation database’in olustugunu gorduk.
+ Biz birbiri ile iliskili verileri birarada tutacagimiz bir database olusturk. Olusturdugumuz techproeducation secili iken yukarida Browser in hemen yan hizasinda silindir ve on kisminda ucgen olan ilk sekil, query’e tikladik. Kodlarimizi yazacagimiz sayfa acildi.
+Acilan sayfada Query ve Query History’nin alt bolumu kodlari yazacagimiz alan, Data Output, Messages, Notifications’in alt bolumu ise bizim console’muz, ayni javadaki gibi
+Kodlari yacagimiz bolumde --  yani iki kisa cizgi yazarak yorum yazabiliriz. Uzun yorumlar icin /*  */
+kullanabiliriz.
+/*
+ SQL KOMUTLARI GRUPLARA AYRILIR :
+ 1.(Data Definition Language - DDL) Veri Tanimlama Dili
+ CREATE: Tablo oluşturur.
+ ALTER: Tabloyu günceller.
+ DROP: Tabloyu siler.
+ 2.(Data Manipulation Language - DML) Veri Kullanma Dili
+ INSERT:Tabloya veri ekler
+ UPDATE:Tablodaki verileri günceller
+ DELETE:Tablodaki verileri siler
+ 3.(Data Query Language - DQL) Veri Sorgulama Dili
+ SELECT: Tablodaki verileri listeler.
+*/
+Hocamizin bizimle paylastigi veriyi(SQL komut gruplari) kodlar kismina yapistirdik.
+Bir tabloyu Create komutu ile ve yine ismini Create komutu ile olusturabiliriz ve sutunlarinin isimlerini Create komutu ile olusturabiliriz.
+Personal isimli create komutu ile olusturdugumuz tabloyu, ismini, sutunlarini Alter komutu ile guncelleyibiliriz.  Tabloya sutun eklemek istersek de Alter Komutunu kullaniriz.
+Drop komutu ile tabloyu, ismini, sutunlarini silebiliriz.
+Bu komutlar Data Definition Language komutlarindan olarak kabul edilirler.
+Data Manipulation  Language komutlarindan olan Insert, Update ve Delete komutlari tablodaki verilerle ilgilidirler.
+Data Query Language komutu olarak kabul edilen Select komutu ile personal tablomuzdaki verileri listeler.
+Biz SQL’de bu komutlari kullanarak tablolar olusturacagiz.
+Talebeler isminde bir tablo olusturalim. Bunun icin CREATE komutunu kullaniriz. Kodlari yazdigimiz kisimda create table yazdik ve create table talebeler diyerek talebeler tablosunu olusturmaya basladik. create table talebeler(
+)
+Bu tablonun sutun isimlerini belirleyelim. Create table talabeler parantez icine ogrenci_tc sutun ismi yazdik. Ikinci sutun ismi olarak ogrenci_isim, ucuncu sutun ismi not_ort, dorduncu sutun ismi kayit_tarihi olarak yazdik. Sutun ismi girerken birden fazla kelime yazacaksak ikinci kelimeye gecerken iki kelime arasina _ yazilmali. ogrenci_tc  sutununa TC kimlik numaralari verelim. Islem yapmayacagimiz ve TC kimlik numaralarinin uzunlugu belirli oldugundan ogrenci_tc yanina char ve char parantezi icine uzunlugu olan 11’I yazdik. ogrenci_isim sutununa ogrenci isim uzunluklari farkli olabileceginden bu sutuna varchar data turunu girelim. varchar() parantezi icinde size olarak 20 verelim. Cunku bir isim uzunlugu en fazla 20 olabilir diye tahmin ettik. not_ort sutununa ogrencilerimizin not ortalamasini girecegiz, dolayisiyla ondalikli sayilar girebiliriz. Bu nedenle data turu olarak real data turunu kullanmaliyiz. kayit_tarihi sutununa bir tarih girecegimiz icin data turu date olmali. Kapanan parantez sonrasi ; ekledik. Bunu tamamladiktan sonra create table talebeler ( ve icerideki kodumuz ile kapali parantez ve ;’yi yani tum kodumuzu secili yaptiktan sonra us torta kisimda ucgen sekilli run’i calistirdik. Console da Create table’I gorduk. Yani talebeler tablomuz olustu. Biz techproeducation uzerinden schema kismina geldik sol tarafta ve onu tiklayinca tables kismi acildi. Oradan talabeler isimli tabloyu gorduk. tablolarimiz bu kisimda depolaniyor. Biz bu talabeler uzerine gelip sagi tikladik ve delete/drop kismini tiklayinca tabloyu sildik. Ancak tablomuzu tekrar olusturmak icin kodlar kismindaki kodumuzu tekrar secili halde iken run ediyoruz ve tables kismina gelip tiklayinca refresh’i gorduk ve tiklayinca tekrar talebeler tablomuzun tables’in altinda olustugunu gorduk. Zaten var olan talebelers tablosu icin kodu secili tutup tekrar run edince ERROR: relation "talebeler" already exists seklinde console’da error uyarisini goruruz.
+8:19
+select * tum sutunlardaki verileri listelemek icin kullanilir. select * from nereden listelemeliyiz? select * from talebeler; yani talebeler tablosundaki verileri listele dedik, ancak tablomuzda herhangi bir veri yok. Bizim tablomuzda sadece sutun isimleri var, olsaydi bu sutun isimleri altinda olurdu. Simdilik bir verimiz yok. Talebeler tablosuna veri ekleyelim. Bunun icin insert komutu kullaniriz. Talebeler tablomuza veri eklemek icin values parantezi icine her sutun icin birer veri girdik. Verileri girerken sutunlarin isimlerine uygun olacak sekilde veriler girdik. Soyle yazdik: insert into talebeler values(‘12345678912’ , ‘Esma’ , 90.5, ‘2020-02-14’) Bu sekilde birden fazla insert komutu ile sutun ekledik. Her insert komutunu iceren kodu secip run ettik. Console’de basarili bir sekilde ekleme yaptigimizi gorduk. Daha sonra talabeler tablosunu tekrar select komutu ile listeleme yaptik:
+select * from talebeler; yazip bu kodumuzu secince console icinde talebeler tablosu icindeki verilerin listelendigini gorduk.
+talebeler tablosunu silmek icin drop komutunu kullandik. drop table talebeler; yazdik ve kodumuzu secip run ettik. Daha sonra gercekten silindi mi diye kontrol etmek icin solda sirali kisimdaki tables’a geldik ve refresh kismina tiklayinca talebeler tablomuzun silindigini anladik.
+Ogretmenler isminde bir tablo olusturduk. create table ogretmenler (
+); bu tablomuzda istedigimiz sutun isimlerini uygun data turleri ile birlikte parantez icinde sirali olarak yazdik.
+ogretmen_ismi: burada varchar data turunu kullanmaliyiz, uzunluklari farkli olacak, size icin 15 girdik.
+bransi: her ogretmenin bransi uzunluklari farkli olur ve varchar data turunu kullandik. size icin 25
+mezuniyet_derecesi: bu sutunda lisans, yuksek lisans olabileceginden String veri ve varchar data turu
+tel_nu: matematiksel bir islem yok, String veri olabilir ve uzunluklari esit olacagindan char data turu
+maas: tam sayilar girileceginden int data turunu kullandik. int olunca yaninda chardaki gibi parantez ve size secme yok.
+Kodumuzun tamanini sectik ve run ettik, tables kismina gelip tables uzerinde refresh kismini tikladik. Tables altinda ogretmenler tablosunun ismini gorduk.
+5 sutun ismi yazdik. Her sutun sismi ve data turu sonrasi virgul koyuyoruz, sadece son sutun ismi kismina virgul eklemiyoruz. Aksi halde console’da error veriyor.
+Biz size olarak 15 girdiysek 16 karakterli bir ismi kabul etmez.
+Ogretmenler tablomuza veriler ekledik. Insert into ogretmenler values(‘Esma’, ‘Matematik’, ‘Lisans’, ‘12345678965@, 30000); Bu islemi secip run ettik ve console’da insert isleminin yapilmis oldugunu gorduk. Values kismina veri girerken sutun isimleri siralamasina gore yazariz. Bu sekilde 3 kez insert komutunu kullandik ve kodlari ayrica run ettik. Bu ayni islemleri birden fazla kez run edersek her seferinde listemize ekler. Select * from ogretmenler; islemimizle tum eklemeleri console uzerinde gorduk.
+Ogretmenler tablosunu drop table ogretmenler komutu ile silebiliriz ancak manuel olarak silmeye karar verdik ve tables kismi uzerine gelip ogretmenler ismini gorduk ve uzerini tiklayinca secenekler icinde drop’u secip sildik.
+select * from tablo_adi ==> * Tüm sutunlardaki verileri listeler
+DQL Grubundan ==> SELECT komutu ile 'Tablodaki İstedigimiz Sütundaki Verileri Listeleyebiliriz'
+Select sutun_adi from tablo_adi;
+create table ogrenciler
+(
+id int,
+isim varchar(40),
+adres varchar(100),
+sinav_notu int
+);
+insert into ogrenciler values(120, 'Ali Can', 'Ankara', 75);
+insert into ogrenciler values(121, 'Veli Mert', 'Trabzon', 85);
+insert into ogrenciler values(122, 'Ayşe Tan', 'Bursa', 65);
+insert into ogrenciler values(123, 'Derya Soylu', 'Istanbul', 95);
+insert into ogrenciler values(124, 'Yavuz Bal', 'Ankara', 85);
+insert into ogrenciler values(125, 'Emre Gül', 'Hatay', 90);
+insert into ogrenciler values(126, 'Harun Reşit', 'Isparta', 100);
+Dilersek tum insert into islemlerinin tamamini ya da bu islemler ile create islemini en basta birlikte secili yapip run yapabiliriz.
+Bu kodlarimiz java gibi yukaridan asagiya ve soldan saga dogru calisir.
+Ogrenciler tablosunu kullanarak select sorularini cozelim.
+--SORU1: ogrenciler tablosunun tum sutunlarındaki verileri listeleyiniz.
+select * from ogrenciler; run edince console’da listelemeyi gorduk.
+--SORU2: ogrenciler tablosundaki 'isim' sutunundaki verileri listeleyiniz
+select isim from ogrenciler; run edince bize sadece isim sutunundaki verileri listeledi.
+--SORU3: ogrenciler tablosundaki 'adres' sutunundaki verileri listeleyiniz
+select adres from ogrenciler; run edince console’da sadece adres stunundaki verilerin listelenmis halini gorduk.
+--SORU4: ogrenciler tablosundaki 'sinav_notu' sutunundaki verileri listeleyiniz.
+select sinav_notu from ogrenciler;
+kodlarimizin bitisinde ; yazmasak da calisir, ancak MYSQL kullanmak durumunda kalirsak, orada istendiginden elimiz alissin diye kullaniyoruz.
+--SORU5: ogrenciler tablosundaki 'isim' ve 'sinav_notu' sutunundaki verileri listeleyiniz
+select isim, sinav_notu from ogrenciler; burada iki sutunun da listelenmesi istendigi icin bu sutunlarin isimleri arasina , koyarak kodumuzu yaziyoruz.
+Kodumuzu yazdigimiz kisimda sayfamizi ikiye bolmek icin Browser yan kisminda duran query seklini tikliyoruz. Bunu yapinca process devaminda yukarida ikinci bir sayfa ismi acildi. Onun uzerine gidip sectik ve solu tiklayip uzerinde durmaya devam edince net olmayacak bir sekilde ikinci bir sayfa acildiginda o kismi secmeyi birakiyoruz.
+--SORU6: ogrenciler tablosundaki sinav_notu 80'den büyük olan öğrencilerin tüm bilgilerini listele
+where==> SART belirtmemiz gerektiginde kullanilir.
+Ekranimizin sag tarafina ikinci sayfaya select *form ogrenciler; yazdik. Console’da tum verilerin listelendigini gorduk. Sartimiz varsa verilerin bir kismi console’a yazilacagindan ilk sayfamiza sadece where komutunu kullanmamiz gerekince select komutu ile islem yaptik.
+Daha sonra sorumuza gore ilk sayfamizda select * from ogrenciler where sinav_notu>80; yazdik. Bizim bir sartimiz oldugu icin where’I bu kodumuzda sartimiz ile birlikte kullandik. Bu sekilde 80’den yuksek notu olanlarin console’da listelendigini gorduk.
+--SORU7: ogrenciler tablosundaki adres'i 'Ankara' olan ögrencilerin tüm bilgilerini listele.
+Burada sartimiz var mi? Var, adresi Ankara olanlari istiyor. Dolayisiyle where komutunu kullanacagiz.
+select * from ogrenciler where adres='Ankara'; run edince kodumuzu, console’da sadece Ankara adresli olan verilerin listelendigini gorduk.
+--SORU8: ogrenciler tablosundaki sinav_notu 85 ve adres'i 'Ankara' olan öğrenci isim'ini listele
+Burada iki sartimiz var. where komutu sonrasinda iki sutunumuz ile ilgili uygun sartlari yerlestirdik. Notu 85, adresi Ankara olan verinin listelenmesini istedik.
+select isim from ogrenciler where sinav_notu=85 and adres='Ankara';
+isim tablo icindeki sutunlardan biri.
+run edince console’da sadece Yavuz Bal ismini gorduk. Cunku her iki sartimiza uyan verimiz Yavuz Bal idi.
+--SORU9: ogrenciler tablosundaki sinav_notu 65 veya 85 olan ogrencilerin tüm bilgilerini listele
+select * from ogrenciler where sinav_notu=65 or sinav_notu=85; bu sarta uyan 3 ogrenci ismini console’da listelenmis halde gorduk.
+Bu soruda 65 ve 85 arasi denmiyor, ya not 65 ya da 85 olacak. Bu soruyu in komutu ile de cozebiliriz.
+in komutu ile birden fazla ifade ile tanimlayabilecegimiz durumlari yazabiliriz. Bu soruyu in komutu ile cozmeye karar verdik.
+select * from ogrenciler where sinav_notu in(65,85); Bir yukaridaki kodda sinav_notu ismini iki kez kullandik, burada in komutu ile bir kere kullandik.
+kodumuzun acik oldugu sayfanin tamamini kaydetmek icin masaustunde yeni bir kalsor actik. Daha sonra sayfamiza gelip kaydet kismindan save as olarak kaydediyoruz ve ust tarafta klasor acma kismindan masaustundeki yeni olusturdugumuz kalasoru buluyoruz ve onu acarken isimlendiriyoruz, daha sonra klasorumuz

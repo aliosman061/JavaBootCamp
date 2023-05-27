@@ -1,0 +1,97 @@
+SQL(Structured Query Language)
+SQL ile database’deki verileri sorgulayacagiz, guncelleyecegiz, silecegiz veya database’e yeni verileri ekleyecegiz.
+Database(Veritabani): Birbiri ile iliskili verilerin bir arada bulundugu yere denir.
+To do list, yapilacak isler listesini iceren bir  kagit parsasi da database’e ornektir. Cunku bu kagit parcasi icerisindeki veriler birbiriyle iliskili. Insan beyninde, hafizada birbiri ile iliskili veriler mevcuttur. Dolayisiyle insan beynini de database’e ornek olarak gosterebiliriz.
+Cloud(Bulut sistemi) de database’e ornektir. Amazon bulut sistemi hizmeti veriyor ve buyuk sirketler Amazon ile verilerinin saklanmasi icin sozlesme imzaliyorlar. Gerektiginde o verileri kullaniyorlar.
+Database bir kagit parcasindan baslamis ve teknolojinin ilerlemesi ile bulut sistemine kadar ilerlemistir.
+Digital Database’in Avantajlari:
+1)Yuksek miktarda bilgi depolanabilir. Dijital olmayan databaseler ornegin bir kagit parcasina sinirli sayida bilgi ekleyebiliriz.
+2)Giris kolaydir. Bir sifre ile giris mumkundur.
+3)Create, Read, Update ve Delete kolayligi saglar. Bu islemleri bir kod satiri ile kolaylikla yapabiliriz.
+4)Guvenlidir. Sadece yetkisi olan personal database’e ulasabilir. Bazi verileri iceren bir kagit parcasi yirtilabilir ya da kaybolabilir. Dijital olmayan databaseler guvenli degildir.
+5)Dataya ulasim kolaydir.
+Oyleyse hepimiz icin dijital databaseler’i kullanma zamani gelmistir.
+SQL kulanarak databasede veriler olurturacagiz ve bu verileri SQL ile test edecegiz.
+End to End Testing:
+Database’de veriyi SQL ile olusturduysak, bu veriyi istersek SQL, Selenium ya da API ile test edebiliriz. Bu isi SQL, Selenium ve API bilen full stack otomation engineer’lar yapabilir.
+Database’de bir veriyi Selenium ya da API ile olusturdugumuzda ayni SQL ile olusturdugumuz gibi veriyi SQL, Slenium ya da API ile test edebiliriz.
+Database Management System(DBMS):
+Database’e erisimi duzenler. Yetkili kisilerin database’e erismesi database management system ile mumkundur. Yetkisi olmayan personeli database’e eristirmez. Bu sistemi, bir gumruk memuruna benzetebiliriz. Yetkili olan geciyor, yetkili olmayan gecemiyor.
+Data guvenligini saglar. Sadece yetkisi olan personal erisebildiginden guvenlik saglanmis olur.
+Create, Read, Update, Delete islemlerini duzenler. Bu sistem ile gerektiginde bir kod satiri ile database’de yeni veriler olusturabilecegiz, okuyabilecegiz, guncelleyebilecegiz ya da silebilecegiz.
+TABLOLAR (TABLES)
+SQL Dtabase’de butun veriler tablolarda saklanir.
+Bir tabloda birden fazla veri bulunabilir. Bu verileri siniflandiran isimlendirmeler en tepede yan yana siralidirlar. Ornegin contactID, name, company, email. Bunlar veri degildirler. Ancak Bu siniflandirmalar altinda yer alan hersey veridir.
+Tablolar sutun, row ve column’dan olusurlar. Sutun ismi kismindaki isimler veri degildirler. Row kisminda ve column kisminda yer alanlar veridirler. Gordugumuz tabloda yana dogru uzanan row kisminda sirasiyla 1 , Bill Gates , Mocrisoft  ve bir email addresi var.
+Yukaridan asagiya uzanan columnlardan birinde, ornegin Bill Gates, Steve Jobs, Linus Torvalds, Andy Harris var.
+RELATIONAL DATABASES(ILISKILI TABLOLAR)
+Tablolarin ve iliskilerin butunune SCHEMA denir.
+Tablolar arasi iliskiler net olmalidir.
+Tablolar arasi gecis kolay olmalidir.
+Gordugumuz uc tablo birbiri ile iliskilendirilmis. 1. Tabloda sirasiyla ID , Ogrenci Adi, Ogrenci Soyadi
+2. Tabloda sirasiyla ID, Ogrenci ID, Ders ID
+3. tabloda sirasiyla ID, Ders Adi var ve bu sekilde isimlendirilen sutunlar altinda veri olarak Kabul ettigimiz veriler var. Ornegin 1. tabloda  2, Ayse, Sari
+2.tabloda 3, 2, 1
+3. tabloda 1, Matematik var ve verilen ID numaralarini diger tablolar icinde arayinca Ayse Sari isimli ogrenci icin dersID’si ve ders adini bulabildik.
+Tum bilgileri uc tablo yerine bir tabloya yukleseydik tablo buyuk olacakti ve verileri buyuk tabloda aramak ve o tabloyu kapatmak cok zaman alirdi. Tablolari farkli yapmak ve birbirleri ile iliskilendirmek ile daha hizli yol almis oluruz. Islem kolayligi saglanmis olur.
+En Cok Kullanilan DataBase Management System’ler:
+PostgreSQL: Yeni nesil bir SQL’dir. Zor gorevler icin idealdir. Piyasada enc ok kullanilan Database Management Sistemdir.
+MySQL: Acik kaynaklidir. Online destek ve ucretsiz cok fazla dokuman mevcuttur. Ancak eszamanli islem girildiginde calismayi durdurabilir.
+Oracle SQL: Yuksek guvenliklidir ve OOP’ye uyumludur, ancak karmasiktir.
+Microsoft SQL: Zengin bir user interface’e sahiptir ve buyuk datalarin kullanilmasinda sorunsuz calisir, ancak pahalidir.
+SQL Komutlari:
+1-Data Definition Language
+2-Data Manipulation Language
+3-Data Query Language
+1.Data Definition Language
+Create:Tablo olusturur. Biz SQL’de tablolarla ilgilnecegiz ve bunun icin create komutunu kullanacagiz. Create komutu ile tablomuza bir isim verecegiz, ornegin Personal tablosu. Create komutu ile sutun isimlerini verecegiz, ornegin ad, soyad ve adres.
+Alter:Tabloyu gunceller. Ornegin yukarida create komutu ile personal olarak olusturdugumuz tablonun ismini ve sutun isimlerini guncelleyebiliriz. Ornek adres ismini ikametgah olarak guncelleyebiliriz.
+Drop:Tabloyu siler. Drop komutu ile personal tablomuzu silebilecegiz.,
+SQL Komutlari:
+1-Data Definition Language
+2-Data Manipulation Language
+3-Data Query Language
+1.Data Definition Language
+Create:Tablo olusturur. Biz SQL’de tablolarla ilgilnecegiz ve bunun icin create komutunu kullanacagiz. Create komutu ile tablomuza bir isim verecegiz, ornegin Personal tablosu. Create komutu ile sutun isimlerini verecegiz, ornegin ad, soyad ve adres.
+Alter:Tabloyu gunceller. Ornegin yukarida create komutu ile personal olarak olusturdugumuz tablonun ismini ve sutun isimlerini guncelleyebiliriz. Ornek adres ismini ikametgah olarak guncelleyebiliriz. Bununka verileri degil, tablonun isim ve sutunlarini guncellerken, update komutu ile verileri guncelleriz.
+Drop:Tabloyu siler. Drop komutu ile personal tablomuzu silebilecegiz.
+Data Definition Language grubundaki komutlar verilerle ilgilenmez, tablo ile ilgilenir.
+2.Data Manipulation Language
+Insert: Tabloya veri ekler. Insert komutu ile personal isimli tablomuza ornegin Ali, Can, Istanbul seklinde verileri ekleyebiliriz. Biz bir yeni bir veri ekledigimizde onun icin bir sutun olusur.
+Update: Tablodaki verileri gunceller. Update komutu ile Ali isimli verileri Hasan olarak guncelleyebiliriz.
+Delete: Tablodaki verileri siler. Delete komutu ile Ali, Can, Istanbul verilerini ya da birini silebiliriz. Data Manipulation Language komutlari verilerle ilgilenir.
+3.Data Query Language
+Select:Tablodaki verileri listeler. Select komutu ile mesela Istanbul verisini listeyebiliriz. Bu grupdaki select komutu ile biz tablo icindeki verilerle ilgileniriz. Biz select komutu ile bir veriyi sorgulayabilecegiz.
+SQL Data Turleri:
+String Data Turleri: char ve varchar
+Char(size), uzunlugu belli olan String Datalar icin kullanilir. Ornek, TC Kimlik Numarasi hepimiz icin 11 karakterlidir. Hepimizin cep telefonu numaralari veya posta kodlari uzunluklari belirlidir. Maximum boyutu, size'i 2000 byte olur.
+Char (size) parantezi icine 4 yazarsak 4 karakterli bir String ya da daha az karakterli bir String tablo icinde girebiliriz. Ancak 4’ten daha fazla uzunluga sahip bir String giremeyiz.
+Tablomuzda deger, char(), Depolama Boyutu, varchar(),Depolama Boyutu isimli sutunlarimiz var. char parantezi icine yazdigimiz deger kadar hafizada o kadar byte yer kaplar. Ornek 4 girdik, 4 byte yer kaplar. Bu hafizada yer kaplamasi cok onemli degildir. Sadece bilmemiz yeterlidir.
+Varchar(size), uzunlugu belli olmayan String datalar icin kullanilir. Ornegin ismimiz 5 karakterli olabilirken, bir baskasininki 7 karakterli olabilir. Isim, soyisim address gibi uzunluklari farkli veriler olabilir. Bunlar icin varchar() kullanilir. Varchar parantezi icine size gireriz. Ornegin size olarak 4 yazabiliriz. Bu durumda 4 ve 4’ten az karakterli ya da uzunlugu olmayan bir veri girebiliriz. Ancak 4’ten fazla karakterli bir veri girisi yapamayiz. Varchar’da da hafizada kapladigi yer onemli olmasa da bilinmesinde fayda var. size olarak neyi girersek hafizda onun bir fazlasi byte yer kaplar. Hic karakter girmezsek, hafizda 1, 5 girdiysek size’I o durumda hafizada 6 byte yer kaplar.
+Varchar’in maximum boyutu yani maximum karakter sayisi 4000 byte olur.
+Numeric Data Turleri:
+Int, tam sayilar icin kulanilir.
+Real, ondalikli sayilar icin kullanilir.
+Ogrenci isimli bir tablo olusturduk ve tablomuzda Ad, Yas, Not Ort isimli sutunlar olusturduk.
+Ad kisminda uzunlugu belli olmayan datalari girmemiz makul olur. Cunku isimlerin karakter uzunluklari farkli olabilir. Bu nedenle varchar data turunu kullanabiliriz. Ali, Veli
+Yas sutununa ise tam sayilar girmek ve int data turu vermemiz makul olur. 20, 30
+Not Ort sutununa ondalikli degerler girilebilir. Dolayisiyla real data turunu verebiliriz. 80.4, 72.5
+Constraint (Kisitlamalar)
+Bir sutuna bir kisitlama vermek zorunda degiliz, ancak bir kisitlama verirsek, o kisitlamaya o sutun icin uymak zorunda kaliriz.
+Bir sutuna Unique kisitlamasi, ya da not null, primary key, check, foreign kisistlamalari verebiliriz.
+Unique: Unique kisitlamasini bir sutuna verirsek, o sutuna benzersiz verileri girmek zorunda oluruz.
+Ornek, Personal tablomuzda ad, soyad, adres sutunlarimiz var ve ad sutununa Unique kisitlamasi verirsek, ad sutununa benzersiz veriler girmeliyiz. Ali ismini girdikten sonra bir kez daha Ali ismini verirsek hata verir.
+Not Null: Bir sutundaki tum verilerin null icermemesidir. Null degerin verilmemesidir. Not Null kisitlamasi icin constraint ismi tanimlanmaz. Not Null kisitlamasi data turunden hemen sonra yazilir. Not null olamaz yani bosluk birakamazsiniz.
+Primary Key: Bir sutundaki tum verilerin benzersiz ve Not Null olmasidir. (Unique + Not Null)
+Bu tur kisitlamayi verirsek iki tur yani Unique ve Not Null kisitlamalarina uymak zorunda kaliriz.  Hem benzersiz olacak hem null deger verilmeyecek.
+Check: Bir sutuna yerlestirilebilecek deger araligini sinirlamak icin kullanilir. Mesela maas sutununuz var ve o sutuna  maasi sadece 10 binden yuksek olan veriler girilmesi yonunde bir kisitlama girebilirz.
+Foreign Key: Baska bir tablodaki Primary Key’i referans gostermek icin kullanilir. Boylelikle tablolar arasinda iliski kurulmus olur.  Mesela iki tablomuz var A ve B isimli. A tablosunda ad ve soad sutunu olsun, B’de ise isim ve soyisim sutunlari olsun. A tablosundaki ad sutununa Foreign Key, B’ye ise Primary Key kisitlamasi verdik. Foreign Key baska bir tablodaki primary key’I referans gostermek icin kullanilir. Boylelikle tablolar arasinda iliski kurulmus olur.
+
+Primary Key:
+Bir sutundaki tum verilerin benzersiz ve Not Null olmasidir. (Unique + Not Null)Bu tur kisitlamayi verirsek iki tur yani Unique ve Not Null kisitlamalarina uymak zorunda kaliriz. Hem benzersiz olacak hem null deger verilmeyecek.
+Bir tabloda en fazla bir tane Primary Key kullanabilirsiniz. Ornek sadece bir sutuna email sutununa primary key kisitlamasi verebiliriz. Diger sutunlara ise primary key yerine baska kisitlamalar verebiliriz. Bir veriyi kullanarak sadece bir kisiye ulasmak istiyorsak o zaman Primary Key kullanilir. Her tabloda Primary Key olmasi zorunlu degildir.
+SQL Composite Key:
+Tek basina bir sutun Primary Key olma ozelliklerini tasimiyorsa, bu ozelligi elde etmek icin iki sutun birlestirilerek bir Primary Key olusturulabilir. Bu duruma Composite Key denir.
+Tablomuzda jobID sutununda tekrarli veriler var. Buna gore orada Primary Key kisitlamasi yok. Ikinci sutun name’e yine tekrarli veri ornek Mark iki kez olarak girilmis. Name sutunu ve jobID sutunlari tek baslarina primary Key ozelligi tasimiyorlar. Ancak Primary Key ozelligi olsun istersek her iki sutunu birlestirerek bir Primary Key elde edebiliriz. Bu nasil olur? Ornek ilk satirda(row) 2, Mark Eye
+Ikinci satir 3, John Ted, 3. Satir 1, Mark Eye seklinde devam ettigimizde ayni veriden iki tane olmayacak sekilde girmis olduk. Yani birlestirme oncesi iki tane Mark Eye varken, birlestirme sonrasi ise 1 Mark Eye, 2 Mark Eye seklinde birbirinin ayni olmayan verileri elde ettik ve burada Primary Key ozelligi olustu.
+
